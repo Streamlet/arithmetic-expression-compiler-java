@@ -4,8 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -22,7 +22,7 @@ import java.util.Stack;
 
 public class ASTBuilder implements ArithmeticExpressionListener {
     public static ASTNode parse(String s) {
-        CharStream input = new ANTLRInputStream(s);
+        CharStream input = CharStreams.fromString(s);
         ArithmeticExpressionLexer lexer = new ArithmeticExpressionLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         ArithmeticExpressionParser parser = new ArithmeticExpressionParser(tokens);
