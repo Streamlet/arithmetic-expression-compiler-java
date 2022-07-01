@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
-        for (String s = stdin.readLine(); !s.isEmpty(); s = stdin.readLine()) {
+        for (String s = stdin.readLine(); s != null && !s.isEmpty(); s = stdin.readLine()) {
             ASTNode ast = ASTBuilder.parse(s);
             ASTPrinter.printResult(ast);
             ASTPrinter.printStruct(ast);
