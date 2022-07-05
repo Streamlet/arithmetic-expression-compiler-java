@@ -1,0 +1,132 @@
+PARSER_BEGIN(ArithmeticExpressionParser)
+
+package org.streamlet.arithmetic.expression.compiler.javacc;
+
+import org.streamlet.arithmetic.expression.compiler.shared.ast.*;
+
+public class ArithmeticExpressionParser {
+
+}
+
+PARSER_END(ArithmeticExpressionParser)
+
+SKIP :
+{
+  " "
+| "\t"
+| "\n"
+}
+
+TOKEN :
+{
+  <ADD: "+">
+| <SUB: "-">
+| <MUL: "*">
+| <DIV: "/">
+| <MOD: "%">
+| <EXP: "^">
+| <LPAREN: "(">
+| <RPAREN: ")">
+| <COMMA: ",">
+| <E: "e">
+| <PI: "pi">
+| <NUM: ((["0"-"9"])+ | (["0"-"9"])* "." (["0"-"9"])+) (["E","e"] (["+","-"])? (["0"-"9"])+)?>
+| <FUNC: ["A"-"Z","a"-"z","_"] (["A"-"Z","a"-"z","_","0"-"9"])* >
+}
+
+ASTNode line():
+{
+    ASTNode r, e;
+}
+{
+    e=expr()  <EOF> { r = e; }
+    { return r; }
+}
+
+ASTNode expr():
+{
+    ASTNode r, t1, t2, t3, t4, t5;
+}
+{
+    // (<ADD> | <SUB>)? term()  ((<ADD> | <SUB>) term())*
+    ( t1=term() { r = t1; }
+    | <ADD> t2=term() { r = new ASTUnaryOperator(UnaryOperator.POS, t2); }
+    | <SUB> t3=term() { r = new ASTUnaryOperator(UnaryOperator.NEG, t3); }
+    )
+    ( <ADD> t4=term() { r = new ASTBinaryOperator(BinaryOperator.ADD, r, t4); }
+    | <SUB> t5=term() { r = new ASTBinaryOperator(BinaryOperator.ADD, r, t5); }
+    )*
+    { return r; }
+}
+
+ASTNode term():
+{
+    ASTNode r, f1, f2, f3, f4;
+}
+{
+    // factor() ((<MUL> | <DIV> | <MOD>) factor())*
+    f1=factor() { r = f1; }
+    ( <MUL> f2=factor() { r = new ASTBinaryOperator(BinaryOperator.MUL, r, f2); }
+    | <DIV> f3=factor() { r = new ASTBinaryOperator(BinaryOperator.DIV, r, f3); }
+    | <MOD> f4=factor() { r = new ASTBinaryOperator(BinaryOperator.MOD, r, f4); }
+    )*
+    { return r; }
+}
+
+ASTNode factor():
+{
+    ASTNode r, e, f;
+}
+{
+    // expee() (<EXP> factor())*
+    e=expee() { r = e; }
+    ( <EXP> f=factor() { r = new ASTBinaryOperator(BinaryOperator.EXP, e, f); }
+    )*
+    { return r; }
+}
+
+ASTNode expee():
+{
+    ASTNode r, n, e;
+    ASTFunction p;
+    Token f;
+}
+{
+    // num()
+    // | <LPAREN> expr() <RPAREN>
+    // | <FUNC> <LPAREN> params() <RPAREN>
+    ( n=num() { r = n; }
+    | <LPAREN> e=expr() <RPAREN> { r = e; }
+    | f=<FUNC> <LPAREN> p=params() <RPAREN> { p.assignName(f.image); r = p; }
+    )
+    { return r; }
+}
+
+ASTFunction params():
+{
+    ASTFunction r;
+    ASTNode e1, e2;
+}
+{
+    // expr() (<COMMA> expr())*
+    e1=expr() { r = new ASTFunction(); r.addArgument(e1); }
+    (<COMMA> e2=expr() { r.addArgument(e2); }
+    )*
+    { return r; }
+}
+
+ASTNumber num():
+{
+    ASTNumber r;
+    Token n;
+}
+{
+    // <E>
+    // | <PI>
+    // | <NUM>
+    ( <E> { r = new ASTNumber(Math.E); }
+    | <PI> { r = new ASTNumber(Math.PI); }
+    | n=<NUM> { r = new ASTNumber(Double.parseDouble(n.image)); }
+    )
+    { return r; }
+}

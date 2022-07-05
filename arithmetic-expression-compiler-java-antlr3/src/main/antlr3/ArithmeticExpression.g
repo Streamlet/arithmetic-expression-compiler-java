@@ -38,7 +38,7 @@ expr returns [ASTNode result]
       | SUB t3=term { $result = new ASTUnaryOperator(UnaryOperator.NEG, $t3.result); }
       )
       ( ADD t4=term { $result = new ASTBinaryOperator(BinaryOperator.ADD, $expr.result, $t4.result); }
-      | SUB t5=term { $result = new ASTBinaryOperator(BinaryOperator.SUB, $expr.result, $t5.result); }
+      | SUB t5=term { $result = new ASTBinaryOperator(BinaryOperator.ADD, $expr.result, $t5.result); }
       )*
     ;
 
@@ -57,7 +57,7 @@ term returns [ASTNode result]
 factor returns [ASTNode result]
       : expee { $result = $expee.result; }
         (options{greedy=true;}:
-        EXP f1=factor { $result = new ASTBinaryOperator(BinaryOperator.EXP, $expee.result, $f1.result); }
+        EXP f=factor { $result = new ASTBinaryOperator(BinaryOperator.EXP, $expee.result, $f.result); }
         )*
       ;
 
