@@ -1,10 +1,10 @@
 grammar ArithmeticExpression;
 
 @lexer::header {
-package org.streamlet.arithmetic.expression.compiler.antlr3.generated;
+package org.streamlet.arithmetic.expression.compiler.antlr3;
 }
 @parser::header {
-package org.streamlet.arithmetic.expression.compiler.antlr3.generated;
+package org.streamlet.arithmetic.expression.compiler.antlr3;
 
 import org.streamlet.arithmetic.expression.compiler.shared.ast.*;
 }

@@ -6,7 +6,6 @@ import org.antlr.runtime.CharStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.tree.CommonTree;
 import org.streamlet.arithmetic.expression.compiler.shared.ast.*;
-import org.streamlet.arithmetic.expression.compiler.antlr3.generated.*;
 
 import java.util.HashMap;
 import java.util.Map;

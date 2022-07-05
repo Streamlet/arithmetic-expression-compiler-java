@@ -2,10 +2,10 @@ grammar ArithmeticExpressionRewrite;
 options { output=AST; }
 
 @lexer::header {
-package org.streamlet.arithmetic.expression.compiler.antlr3.generated;
+package org.streamlet.arithmetic.expression.compiler.antlr3;
 }
 @parser::header {
-package org.streamlet.arithmetic.expression.compiler.antlr3.generated;
+package org.streamlet.arithmetic.expression.compiler.antlr3;
 }
 
 WS : (' ' | '\t' | '\n') { skip(); };

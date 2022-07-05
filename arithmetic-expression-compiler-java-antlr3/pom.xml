@@ -53,8 +53,27 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <outputDirectory>src/main/java/org/streamlet/arithmetic/expression/compiler/antlr3/generated</outputDirectory>
+                    <outputDirectory>${basedir}/target/generated-sources/antlr3/org/streamlet/arithmetic/expression/compiler/antlr3</outputDirectory>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${basedir}/target/generated-sources</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

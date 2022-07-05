@@ -1,5 +1,9 @@
 grammar ArithmeticExpression;
 
+@header {
+package org.streamlet.arithmetic.expression.compiler.antlr4;
+}
+
 line: expr EOF
     ;
 
