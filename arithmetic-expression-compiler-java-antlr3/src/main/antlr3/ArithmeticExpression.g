@@ -1,5 +1,4 @@
 grammar ArithmeticExpression;
-// options { output=AST; }
 
 @lexer::header {
 package org.streamlet.arithmetic.expression.compiler.antlr3.generated;
@@ -8,10 +7,6 @@ package org.streamlet.arithmetic.expression.compiler.antlr3.generated;
 package org.streamlet.arithmetic.expression.compiler.antlr3.generated;
 
 import org.streamlet.arithmetic.expression.compiler.shared.ast.*;
-}
-
-@members {
-ASTNode result;
 }
 
 WS : (' ' | '\t' | '\n') { skip(); };
