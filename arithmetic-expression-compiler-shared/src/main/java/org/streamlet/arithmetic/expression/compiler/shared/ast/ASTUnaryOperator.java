@@ -1,4 +1,4 @@
-package org.streamlet.arithmetic.expression.compiler.antlr4.ast;
+package org.streamlet.arithmetic.expression.compiler.shared.ast;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

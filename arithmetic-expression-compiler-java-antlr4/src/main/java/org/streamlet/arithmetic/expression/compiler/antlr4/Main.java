@@ -1,6 +1,7 @@
 package org.streamlet.arithmetic.expression.compiler.antlr4;
 
-import org.streamlet.arithmetic.expression.compiler.antlr4.ast.ASTNode;
+import org.streamlet.arithmetic.expression.compiler.shared.ASTPrinter;
+import org.streamlet.arithmetic.expression.compiler.shared.ast.ASTNode;
 
 import java.io.BufferedReader;
 import java.io.IOException;

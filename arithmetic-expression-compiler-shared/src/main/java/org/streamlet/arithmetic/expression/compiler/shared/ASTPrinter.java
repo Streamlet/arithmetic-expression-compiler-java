@@ -1,6 +1,6 @@
-package org.streamlet.arithmetic.expression.compiler.antlr4;
+package org.streamlet.arithmetic.expression.compiler.shared;
 
-import org.streamlet.arithmetic.expression.compiler.antlr4.ast.*;
+import org.streamlet.arithmetic.expression.compiler.shared.ast.*;
 
 import java.text.DecimalFormat;
 

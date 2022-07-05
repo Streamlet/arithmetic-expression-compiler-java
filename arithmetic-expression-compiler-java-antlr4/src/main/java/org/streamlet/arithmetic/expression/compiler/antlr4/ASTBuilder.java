@@ -11,7 +11,7 @@ import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.antlr.v4.runtime.tree.TerminalNode;
-import org.streamlet.arithmetic.expression.compiler.antlr4.ast.*;
+import org.streamlet.arithmetic.expression.compiler.shared.ast.*;
 import org.streamlet.arithmetic.expression.compiler.antlr4.generated.ArithmeticExpressionLexer;
 import org.streamlet.arithmetic.expression.compiler.antlr4.generated.ArithmeticExpressionListener;
 import org.streamlet.arithmetic.expression.compiler.antlr4.generated.ArithmeticExpressionParser;

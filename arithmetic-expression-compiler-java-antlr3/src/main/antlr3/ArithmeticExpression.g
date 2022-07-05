@@ -7,7 +7,7 @@ package org.streamlet.arithmetic.expression.compiler.antlr3.generated;
 @parser::header {
 package org.streamlet.arithmetic.expression.compiler.antlr3.generated;
 
-import org.streamlet.arithmetic.expression.compiler.antlr3.ast.*;
+import org.streamlet.arithmetic.expression.compiler.shared.ast.*;
 }
 
 @members {

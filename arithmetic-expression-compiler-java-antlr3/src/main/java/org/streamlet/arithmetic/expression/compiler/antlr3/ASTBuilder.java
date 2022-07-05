@@ -4,7 +4,7 @@ import lombok.*;
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.CommonTokenStream;
-import org.streamlet.arithmetic.expression.compiler.antlr3.ast.*;
+import org.streamlet.arithmetic.expression.compiler.shared.ast.*;
 import org.streamlet.arithmetic.expression.compiler.antlr3.generated.*;
 
 public class ASTBuilder {
