@@ -15,10 +15,10 @@
     </properties>
 
     <modules>
-        <module>arithmetic-expression-compiler-shared</module>
-        <module>arithmetic-expression-compiler-java-javacc</module>
-        <module>arithmetic-expression-compiler-java-antlr3</module>
-        <module>arithmetic-expression-compiler-java-antlr4</module>
+        <module>shared</module>
+        <module>javacc</module>
+        <module>antlr3</module>
+        <module>antlr4</module>
     </modules>
 
 </project>
