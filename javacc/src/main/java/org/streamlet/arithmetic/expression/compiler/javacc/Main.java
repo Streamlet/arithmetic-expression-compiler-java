@@ -1,4 +1,4 @@
-package org.arithmetic.expression.compile.javacc;
+package org.streamlet.arithmetic.expression.compiler.javacc;
 
 import org.streamlet.arithmetic.expression.compiler.shared.ASTPrinter;
 import org.streamlet.arithmetic.expression.compiler.shared.ast.ASTNode;

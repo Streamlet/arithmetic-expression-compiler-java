@@ -1,4 +1,4 @@
-package org.arithmetic.expression.compile.javacc;
+package org.streamlet.arithmetic.expression.compiler.javacc;
 
 import lombok.SneakyThrows;
 import org.streamlet.arithmetic.expression.compiler.javacc.ArithmeticExpressionParser;
